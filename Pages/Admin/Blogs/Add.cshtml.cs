@@ -8,5 +8,10 @@ namespace Bloggie.Web.Pages.Admin.Blogs
         public void OnGet()
         {
         }
+        public void OnPost()
+        {
+            var heading = Request.Form["heading"];
+            Console.WriteLine(heading);
+        }
     }
 }
