@@ -3,42 +3,41 @@
 @{
 }
 
-<div class="container-fluid">
-	<h1 class="my-3 text-center">See the blog posts</h1>
-	<div>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Heading</th>
-                    <th scope="col">Page Title</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Short Description</th>
-                    <th scope="col">Image Url</th>
-                    <th scope="col">Url Handle</th>
-                    <th scope="col">Published Date</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Visibility</th>
-                </tr>
-            </thead>
-            <tbody>
-               @foreach(var blogPost in Model.BlogPosts)
-                {
+@if(Model.BlogPosts != null)
+{
+    <div class="container-fluid">
+        <h1 class="my-3 text-center">See the blog posts</h1>
+        <div>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <th scope="row">@blogPost.Id</th>
-                        <th scope="col">@blogPost.Heading</th>
-                        <th scope="col">@blogPost.PageTitle</th>
-                        <th scope="col">@blogPost.Content</th>
-                        <th scope="col">@blogPost.ShortDescription</th>
-                        <th scope="col">@blogPost.FeaturedImageUrl</th>
-                        <th scope="col">@blogPost.UrlHandle</th>
-                        <th scope="col">@blogPost.PublishedDate</th>
-                        <th scope="col">@blogPost.Author</th>
-                        <th scope="col">@blogPost.Visible</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Url Handle</th>
+                        <th scope="col">Published Date</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">#</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-	</div>
+                </thead>
+                <tbody>
+                    @foreach (var blogPost in Model.BlogPosts)
+                    {
+                        <tr>
+                            <td>@blogPost.Id</td>
+                            <td>@blogPost.PublishedDate</td>
+                            <td>@blogPost.Author</td>
+                            <td><a href="/Admin/Blogs/View/@blogPost.Id">View</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 
-</div>
+    </div>
+}
+
+else
+{
+    <div class="container-fluid">
+        <h1 class="d-flex justify-content-center align-items-center">There is no blog post.</h1>
+    </div>
+}
